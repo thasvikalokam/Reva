@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>REVA | Reuse • Exchange • Value • Access</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         NAVIGATION
+    ====================================================== -->
+
+    <header class="navbar">
+
+        <a href="#home" class="brand">
+            REVA
+        </a>
+
+        <nav class="nav-links">
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="#explore" class="nav-link">Explore</a>
+            <a href="#how-it-works" class="nav-link">How It Works</a>
+            <a href="#impact" class="nav-link">Impact</a>
+        </nav>
+
+        <div class="nav-actions">
+            <button class="login-button" onclick="openLogin()">
+                Login
+            </button>
+
+            <button class="join-button" onclick="openLogin('register')">
+                Join REVA
+            </button>
+
+            <button class="profile-button hidden" onclick="openProfile()">
+                <span id="navUserInitial">U</span>
+            </button>
+        </div>
+
+        <button class="menu-button" onclick="toggleMobileMenu()">
+            ☰
+        </button>
+
+    </header>
+
+
+    <!-- MOBILE MENU -->
+
+    <div class="mobile-menu" id="mobileMenu">
+
+        <a href="#home" onclick="closeMobileMenu()">Home</a>
+
+        <a href="#explore" onclick="closeMobileMenu()">Explore</a>
+
+        <a href="#how-it-works" onclick="closeMobileMenu()">
+            How It Works
+        </a>
+
+        <a href="#impact" onclick="closeMobileMenu()">Impact</a>
+
+        <button onclick="openLogin(); closeMobileMenu();">
+            Login
+        </button>
+
+        <button onclick="openLogin('register'); closeMobileMenu();">
+            Join REVA
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <main>
+
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+
+                <div class="eyebrow">
+                    <span></span>
+                    A smarter circular community
+                </div>
+
+                <h1>
+                    What you don't
+                    <br>
+                    use can be what
+                    <br>
+                    <span>someone needs.</span>
+                </h1>
+
+                <p class="hero-description">
+                    REVA makes it simple to donate, exchange and
+                    discover useful items within a trusted community.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <button class="primary-button"
+                            onclick="scrollToSection('explore')">
+                        Explore Items
+                        <span>→</span>
+                    </button>
+
+                    <button class="text-button"
+                            onclick="openAddItem()">
+                        List an Item
+                        <span>＋</span>
+                    </button>
+
+                </div>
+
+                <div class="hero-stats">
+
+                    <div>
+                        <strong id="heroItemsCount">2,400+</strong>
+                        <span>items shared</span>
+                    </div>
+
+                    <div>
+                        <strong>1,860</strong>
+                        <span>items reused</span>
+                    </div>
+
+                    <div>
+                        <strong>2,400+</strong>
+                        <span>connections</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- HERO VISUAL -->
+
+            <div class="hero-visual">
+
+                <div class="hero-circle"></div>
+
+                <div class="hero-center">
+                    <span class="hero-r">R</span>
+                    <span>REVA</span>
+                </div>
+
+
+                <div class="floating-item item-top">
+
+                    <div class="item-symbol book-symbol">
+                        📚
+                    </div>
+
+                    <div>
+                        <strong>Engineering Books</strong>
+                        <small>Available • 1.2 km</small>
+                    </div>
+
+                    <button>♡</button>
+
+                </div>
+
+
+                <div class="floating-item item-right">
+
+                    <div class="item-symbol headphone-symbol">
+                        🎧
+                    </div>
+
+                    <div>
+                        <strong>Wireless Headphones</strong>
+                        <small>Exchange • 0.8 km</small>
+                    </div>
+
+                    <button>♡</button>
+
+                </div>
+
+
+                <div class="floating-item item-bottom">
+
+                    <div class="item-symbol plant-symbol">
+                        🪴
+                    </div>
+
+                    <div>
+                        <strong>Plant Pot Set</strong>
+                        <small>Donate • 2.4 km</small>
+                    </div>
+
+                    <button>♡</button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             EXPLORE
+        ====================================================== -->
+
+        <section class="explore-section" id="explore">
+
+            <div class="section-heading">
+
+                <div>
+                    <div class="section-label">
+                        COMMUNITY MARKETPLACE
+                    </div>
+
+                    <h2>
+                        Find something useful.
+                    </h2>
+
+                    <p>
+                        Give useful things a second life or discover
+                        something you need from your community.
+                    </p>
+                </div>
+
+                <button class="primary-button"
+                        onclick="openAddItem()">
+                    + List an Item
+                </button>
+
+            </div>
+
+
+            <!-- SEARCH -->
+
+            <div class="search-area">
+
+                <div class="search-box">
+
+                    <span>⌕</span>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search books, electronics, furniture..."
+                        oninput="filterItems()">
+
+                </div>
+
+                <select id="categoryFilter"
+                        onchange="filterItems()">
+
+                    <option value="all">
+                        All Categories
+                    </option>
+
+                    <option value="books">
+                        Books
+                    </option>
+
+                    <option value="electronics">
+                        Electronics
+                    </option>
+
+                    <option value="furniture">
+                        Furniture
+                    </option>
+
+                    <option value="clothing">
+                        Clothing
+                    </option>
+
+                    <option value="plants">
+                        Plants
+                    </option>
+
+                    <option value="others">
+                        Others
+                    </option>
+
+                </select>
+
+                <select id="typeFilter"
+                        onchange="filterItems()">
+
+                    <option value="all">
+                        All Types
+                    </option>
+
+                    <option value="Donate">
+                        Donate
+                    </option>
+
+                    <option value="Exchange">
+                        Exchange
+                    </option>
+
+                    <option value="Borrow">
+                        Borrow
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- ITEM GRID -->
+
+            <div class="items-grid" id="itemsGrid">
+                <!-- JavaScript creates items -->
+            </div>
+
+
+            <div class="empty-state hidden" id="emptyState">
+
+                <div class="empty-icon">
+                    ♧
+                </div>
+
+                <h3>
+                    No items found
+                </h3>
+
+                <p>
+                    Try another search or category.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             HOW IT WORKS
+        ====================================================== -->
+
+        <section class="how-section" id="how-it-works">
+
+            <div class="center-heading">
+
+                <div class="section-label">
+                    SIMPLE • TRUSTED • CIRCULAR
+                </div>
+
+                <h2>
+                    How REVA works
+                </h2>
+
+                <p>
+                    Turning unused possessions into useful connections
+                    takes just a few simple steps.
+                </p>
+
+            </div>
+
+
+            <div class="steps">
+
+                <div class="step-card">
+
+                    <div class="step-number">
+                        01
+                    </div>
+
+                    <div class="step-icon">
+                        📦
+                    </div>
+
+                    <h3>
+                        List an item
+                    </h3>
+
+                    <p>
+                        Add something you no longer use.
+                        Choose whether you want to donate,
+                        exchange or lend it.
+                    </p>
+
+                </div>
+
+
+                <div class="step-line"></div>
+
+
+                <div class="step-card">
+
+                    <div class="step-number">
+                        02
+                    </div>
+
+                    <div class="step-icon">
+                        🔎
+                    </div>
+
+                    <h3>
+                        Discover
+                    </h3>
+
+                    <p>
+                        Search for useful items shared by
+                        people around your community.
+                    </p>
+
+                </div>
+
+
+                <div class="step-line"></div>
+
+
+                <div class="step-card">
+
+                    <div class="step-number">
+                        03
+                    </div>
+
+                    <div class="step-icon">
+                        🤝
+                    </div>
+
+                    <h3>
+                        Connect
+                    </h3>
+
+                    <p>
+                        Contact the owner and arrange a safe
+                        exchange, donation or borrowing.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             IMPACT
+        ====================================================== -->
+
+        <section class="impact-section" id="impact">
+
+            <div class="impact-content">
+
+
+                <!-- LEFT -->
+
+                <div class="impact-text">
+
+                    <div class="impact-label">
+                        <span>◆</span>
+                        OUR COLLECTIVE IMPACT
+                    </div>
+
+                    <h2>
+                        Small exchanges
+                        <br>
+                        create a bigger
+                        <br>
+                        change.
+                    </h2>
+
+                    <p>
+                        Every item reused means one less new item
+                        needed and one more useful object kept in
+                        circulation.
+                    </p>
+
+
+                    <div class="impact-stat">
+
+                        <div class="stat-icon">
+                            ♻
+                        </div>
+
+                        <div class="stat-text">
+
+                            <strong id="impactItems">
+                                1,860 items
+                            </strong>
+
+                            <span>
+                                given a second life
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="impact-stat">
+
+                        <div class="stat-icon">
+                            🌱
+                        </div>
+
+                        <div class="stat-text">
+
+                            <strong>
+                                920 kg
+                            </strong>
+
+                            <span>
+                                estimated waste diverted
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="impact-stat">
+
+                        <div class="stat-icon">
+                            🤝
+                        </div>
+
+                        <div class="stat-text">
+
+                            <strong>
+                                2,400+
+                            </strong>
+
+                            <span>
+                                community connections
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RIGHT CIRCULAR DIAGRAM -->
+
+                <div class="impact-diagram">
+
+                    <div class="diagram-ring ring-one"></div>
+
+                    <div class="diagram-ring ring-two"></div>
+
+                    <div class="diagram-ring ring-three"></div>
+
+
+                    <!-- SVG ARROWS -->
+
+                    <svg
+                        class="diagram-arrows"
+                        viewBox="0 0 500 500">
+
+                        <defs>
+
+                            <marker
+                                id="arrowhead"
+                                markerWidth="10"
+                                markerHeight="10"
+                                refX="8"
+                                refY="5"
+                                orient="auto">
+
+                                <path
+                                    d="M 0 0 L 10 5 L 0 10 Z"
+                                    fill="#319c4b">
+                                </path>
+
+                            </marker>
+
+                        </defs>
+
+
+                        <path
+                            d="M250 105
+                               C340 115 400 175 405 245"
+                            fill="none"
+                            stroke="#319c4b"
+                            stroke-width="3"
+                            marker-end="url(#arrowhead)">
+                        </path>
+
+
+                        <path
+                            d="M395 285
+                               C350 385 190 420 110 350"
+                            fill="none"
+                            stroke="#319c4b"
+                            stroke-width="3"
+                            marker-end="url(#arrowhead)">
+                        </path>
+
+
+                        <path
+                            d="M100 315
+                               C65 225 125 125 220 105"
+                            fill="none"
+                            stroke="#319c4b"
+                            stroke-width="3"
+                            marker-end="url(#arrowhead)">
+                        </path>
+
+                    </svg>
+
+
+                    <!-- CENTER -->
+
+                    <div class="diagram-center">
+
+                        <div class="center-r">
+                            R
+                        </div>
+
+                        <div class="center-reva">
+                            REVA
+                        </div>
+
+                    </div>
+
+
+                    <!-- EXCHANGE -->
+
+                    <div class="diagram-node exchange-node">
+
+                        <div class="node-symbol">
+                            ↻
+                        </div>
+
+                        <strong>
+                            EXCHANGE
+                        </strong>
+
+                    </div>
+
+
+                    <!-- VALUE -->
+
+                    <div class="diagram-node value-node">
+
+                        <div class="node-symbol">
+                            🌱
+                        </div>
+
+                        <strong>
+                            VALUE
+                        </strong>
+
+                    </div>
+
+
+                    <!-- ACCESS -->
+
+                    <div class="diagram-node access-node">
+
+                        <div class="node-symbol">
+                            ●●●
+                        </div>
+
+                        <strong>
+                            ACCESS
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             COMMUNITY CTA
+        ====================================================== -->
+
+        <section class="cta-section">
+
+            <div>
+
+                <div class="section-label">
+                    JOIN THE CIRCLE
+                </div>
+
+                <h2>
+                    Your unused item could
+                    <br>
+                    be someone else's solution.
+                </h2>
+
+                <p>
+                    Start sharing, exchanging and reusing today.
+                </p>
+
+            </div>
+
+            <button class="white-button"
+                    onclick="openLogin('register')">
+                Join REVA →
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         LOGIN / REGISTER MODAL
+    ====================================================== -->
+
+    <div class="modal-overlay hidden" id="authModal">
+
+        <div class="modal">
+
+            <button class="close-modal"
+                    onclick="closeModal('authModal')">
+                ×
+            </button>
+
+
+            <div class="modal-brand">
+                REVA
+            </div>
+
+            <h2 id="authTitle">
+                Welcome back
+            </h2>
+
+            <p id="authSubtitle">
+                Login to continue to your REVA community.
+            </p>
+
+
+            <!-- LOGIN -->
+
+            <form id="loginForm"
+                  onsubmit="loginUser(event)">
+
+                <label>
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="you@example.com"
+                    required>
+
+
+                <label>
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Enter your password"
+                    required>
+
+
+                <button type="submit"
+                        class="primary-button full-button">
+                    Login
+                </button>
+
+            </form>
+
+
+            <!-- REGISTER -->
+
+            <form id="registerForm"
+                  class="hidden"
+                  onsubmit="registerUser(event)">
+
+                <label>
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="registerName"
+                    placeholder="Your name"
+                    required>
+
+
+                <label>
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="registerEmail"
+                    placeholder="you@example.com"
+                    required>
+
+
+                <label>
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="registerPassword"
+                    placeholder="Create a password"
+                    required>
+
+
+                <button type="submit"
+                        class="primary-button full-button">
+                    Create REVA Account
+                </button>
+
+            </form>
+
+
+            <div class="auth-switch">
+
+                <span id="authSwitchText">
+                    Don't have an account?
+                </span>
+
+                <button onclick="switchAuth()"
+                        id="authSwitchButton">
+                    Join REVA
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         ADD ITEM MODAL
+    ====================================================== -->
+
+    <div class="modal-overlay hidden" id="itemModal">
+
+        <div class="modal large-modal">
+
+            <button class="close-modal"
+                    onclick="closeModal('itemModal')">
+                ×
+            </button>
+
+            <div class="modal-brand">
+                REVA
+            </div>
+
+            <h2>
+                List an item
+            </h2>
+
+            <p>
+                Give something useful a second life.
+            </p>
+
+
+            <form onsubmit="addItem(event)">
+
+                <div class="form-grid">
+
+                    <div>
+
+                        <label>
+                            Item Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="itemName"
+                            placeholder="Example: Engineering Books"
+                            required>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Category
+                        </label>
+
+                        <select id="itemCategory"
+                                required>
+
+                            <option value="">
+                                Select category
+                            </option>
+
+                            <option value="books">
+                                Books
+                            </option>
+
+                            <option value="electronics">
+                                Electronics
+                            </option>
+
+                            <option value="furniture">
+                                Furniture
+                            </option>
+
+                            <option value="clothing">
+                                Clothing
+                            </option>
+
+                            <option value="plants">
+                                Plants
+                            </option>
+
+                            <option value="others">
+                                Others
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Type
+                        </label>
+
+                        <select id="itemType"
+                                required>
+
+                            <option value="">
+                                Select type
+                            </option>
+
+                            <option value="Donate">
+                                Donate
+                            </option>
+
+                            <option value="Exchange">
+                                Exchange
+                            </option>
+
+                            <option value="Borrow">
+                                Borrow
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Location
+                        </label>
+
+                        <input
+                            type="text"
+                            id="itemLocation"
+                            placeholder="Example: College Campus"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <label>
+                    Description
+                </label>
+
+                <textarea
+                    id="itemDescription"
+                    rows="4"
+                    placeholder="Describe the item's condition and details..."
+                    required></textarea>
+
+
+                <label>
+                    Upload Item Image
+                </label>
+
+                <input
+                    type="file"
+                    id="itemImage"
+                    accept="image/*"
+                    onchange="previewItemImage(event)">
+
+
+                <div class="image-preview hidden"
+                     id="imagePreview">
+
+                    <img id="previewImage"
+                         alt="Item Preview">
+
+                </div>
+
+
+                <button type="submit"
+                        class="primary-button full-button">
+
+                    Publish Item
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         PROFILE MODAL
+    ====================================================== -->
+
+    <div class="modal-overlay hidden"
+         id="profileModal">
+
+        <div class="modal profile-modal">
+
+            <button class="close-modal"
+                    onclick="closeModal('profileModal')">
+                ×
+            </button>
+
+
+            <div class="profile-header">
+
+                <div class="profile-avatar"
+                     id="profileAvatar">
+                    U
+                </div>
+
+                <div>
+
+                    <h2 id="profileName">
+                        User
+                    </h2>
+
+                    <p id="profileEmail">
+                        user@example.com
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="profile-stats">
+
+                <div>
+                    <strong id="myListingsCount">
+                        0
+                    </strong>
+
+                    <span>
+                        Listings
+                    </span>
+                </div>
+
+
+                <div>
+                    <strong>
+                        12
+                    </strong>
+
+                    <span>
+                        Exchanges
+                    </span>
+                </div>
+
+
+                <div>
+                    <strong>
+                        24
+                    </strong>
+
+                    <span>
+                        Connections
+                    </span>
+                </div>
+
+            </div>
+
+
+            <h3 class="profile-title">
+                My Recent Listings
+            </h3>
+
+            <div id="profileListings"
+                 class="profile-listings">
+
+            </div>
+
+
+            <button class="logout-button"
+                    onclick="logoutUser()">
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- TOAST -->
+
+    <div class="toast"
+         id="toast">
+
+        <span id="toastMessage">
+            Done
+        </span>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
